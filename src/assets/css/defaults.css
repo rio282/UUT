@@ -6,6 +6,11 @@
     scroll-behavior: smooth;
 }
 
+.content {
+    /* TODO: fix this so it actually gets the navbar size*/
+    margin-top: 95px;
+}
+
 /* NAVBAR */
 .navbar {
     background-color: #00102b;

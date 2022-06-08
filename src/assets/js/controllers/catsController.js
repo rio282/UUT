@@ -28,7 +28,7 @@ export class CatsController extends Controller {
             }
             const catCardHtml = await response.text();
 
-            for (let postNumber = 0; postNumber < 10; postNumber++) {
+            for (let postNumber = 1; postNumber <= 10; postNumber++) {
                 let catCard = document.createElement("div");
                 catCard.innerHTML = catCardHtml; // assign template to newly created element
                 timeline.append(catCard);
