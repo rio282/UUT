@@ -3,6 +3,7 @@ import {NavbarController} from "./controllers/navbarController.js"
 import {FooterController} from "./controllers/footerController.js"
 import {HomeController} from "./controllers/homeController.js";
 import {ApiController} from "./controllers/apiController.js";
+import {CatsController} from "./controllers/catsController.js";
 
 export class App {
     static sessionManager = new SessionManager();
@@ -11,6 +12,7 @@ export class App {
     static CONTROLLER_FOOTER = "footer";
     static CONTROLLER_HOME = "home";
     static CONTROLLER_API = "api";
+    static CONTROLLER_CAT = "cats";
 
     constructor() {
         App.loadController(App.CONTROLLER_NAVBAR);
@@ -38,6 +40,10 @@ export class App {
 
             case App.CONTROLLER_API:
                 new ApiController();
+                break;
+
+            case App.CONTROLLER_CAT:
+                new CatsController();
                 break;
 
             default:

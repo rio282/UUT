@@ -23,10 +23,10 @@ export class NavbarController extends Controller {
         const anchors = this.#navbarView.querySelectorAll("a.nav-link");
         anchors.forEach(anchor => anchor.addEventListener("click", (event) => this.#handleClickNavigationItem(event)));
 
-        // highlight correct anchor
+        // highlight correct anchor when page is loaded
         anchors.forEach(anchor => {
             const url = document.location.href.split("/")[3].replace("#", "");
-            if (anchor.textContent.toLowerCase() === url)
+            if (typeof anchor.dataset.controller !== "undefined" && anchor.dataset.controller === url)
                 anchor.classList.add("active");
         });
     }

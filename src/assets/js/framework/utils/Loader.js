@@ -42,4 +42,8 @@ export class Loader {
         if (showLoaderElement)
             await this.#showLoader();
     }
+
+    static async hide() {
+        await Loader.show(false);
+    }
 }

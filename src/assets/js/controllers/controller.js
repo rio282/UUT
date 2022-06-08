@@ -20,11 +20,8 @@ export class Controller {
      * @private
      */
     async #fetchHtmlView(htmlFile, customElement = null) {
-
-
         let loadInto = this.#contentViewHtml; // default
         if (customElement instanceof Element) {
-            console.log("load html into custom element instead of index.html")
             loadInto = customElement;
         }
 

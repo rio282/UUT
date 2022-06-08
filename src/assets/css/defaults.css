@@ -13,3 +13,13 @@
     border: none !important;
     z-index: 9999;
 }
+
+/* PAGES */
+.page-title {
+    margin: 1.75rem;
+    text-align: center !important
+}
+
+.hidden {
+    display: none;
+}
