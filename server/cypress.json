@@ -1,0 +1,6 @@
+{
+  "integrationFolder": "cypress/integration/uut",
+  "video": false,
+  "viewportWidth": 1600,
+  "viewportHeight": 900
+}
