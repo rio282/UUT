@@ -11,7 +11,7 @@ export class Loader {
         // get html data
         const response = await fetch("/html_views/templates/loader.html");
         if (!response.ok)
-            return
+            return;
 
         // create & add loader element to page
         const loader = document.createElement("div");
