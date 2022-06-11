@@ -14,7 +14,7 @@
                     <i class="fa fa-gears"></i> Generate
                 </button>
             </div>
-            <div class="col-auto">
+            <div class="col-auto flex-fill">
                 <input type="password" id="create-room-key__field" class="form-control"
                        aria-describedby="key__help_block">
                 <div id="create-room-key__help_block" class="form-text">
@@ -36,8 +36,13 @@
             <div class="col-2">
                 <label for="create-door__field" class="form-label">door_number</label>
             </div>
-            <div class="col-2">
-                <input type="number" id="create-door__field" class="form-control">
+            <div class="col-auto">
+                <button type="button" class="btn btn-warning mb-3" id="create-room-door-random__btn">
+                    <i class="fa fa-random"></i> Random
+                </button>
+            </div>
+            <div class="col-auto flex-fill">
+                <input type="number" id="create-door__field" class="form-control" value="1">
                 <div id="create-door__help_block" class="form-text">
                     Your door_number must be a positive number.
                 </div>
@@ -93,9 +98,12 @@
             <div class="col-2">
                 <label for="peek-room-key__field" class="form-label">room_key</label>
             </div>
-            <div class="col-auto">
+            <div class="col-auto flex-fill">
                 <input type="password" id="peek-room-key__field" class="form-control"
                        aria-describedby="key__help_block">
+                <div id="peek-room-key__help_block" class="form-text">
+                    Keep your room_key private! Please only share this key with the intended person(s).
+                </div>
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-warning mb-3" id="peek-room-key-input__btn">
@@ -112,7 +120,7 @@
             <div class="col-2">
                 <label for="peek-door__field" class="form-label">door_number</label>
             </div>
-            <div class="col-2">
+            <div class="col-auto flex-fill">
                 <input type="number" id="peek-door__field" class="form-control">
             </div>
         </div>
