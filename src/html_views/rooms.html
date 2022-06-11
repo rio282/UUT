@@ -1,59 +1,127 @@
 <div class="container">
     <h1 class="page-title text-center">Rooms</h1>
 
-    <div class="text-wrap">
+    <hr>
 
-    </div>
-
-    <!-- Create a room -->
-    <!--
-        room_name: optional
-        room_key: user-choice | auto-generate (show/hide)
-        room_memory: up to 3 GB
-        auto_delete_after: x mins | 1-24 hours
-        instant_delete_room_after_{x}_visits: true | false
-        [CREATE]
-    -->
-    <h3 class="text-center">Create Room</h3>
-    <form class="row g-3 justify-content-center mt-1 mb-3">
-        <div class="form-group"></div>
-        <div class="col-auto">
-            <label for="create-room-key__field" class="form-label">room_key</label>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-warning mb-3" id="create-room-key-generate__btn">Generate</button>
-        </div>
-        <div class="col-auto">
-            <input type="password" id="create-room-key__field" class="form-control"
-                   aria-describedby="key__help_block">
-            <div id="create-room-key__help_block" class="form-text">
-                Your room_key must be 8-32 characters long and must not contain special characters or emojis.
+    <form class="mt-1 mb-3">
+        <h3 class="text-center">Create Room</h3>
+        <div class="row g-3 p-2">
+            <div class="col-2">
+                <label for="create-room-key__field" class="form-label">room_key</label>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-warning mb-3" id="create-room-key-generate__btn">
+                    <i class="fa fa-gears"></i> Generate
+                </button>
+            </div>
+            <div class="col-auto">
+                <input type="password" id="create-room-key__field" class="form-control"
+                       aria-describedby="key__help_block">
+                <div id="create-room-key__help_block" class="form-text">
+                    Your room_key must be 8-32 characters long and must not contain special characters or emojis.
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-warning mb-3" id="create-room-key-input__btn">
+                    Show <i class="fa fa-eye"></i>
+                </button>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-warning mb-3" id="create-room-key-copy__btn">
+                    Copy <i class="fa fa-copy"></i>
+                </button>
             </div>
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-warning mb-3" id="create-room-key-input__btn">Show</button>
+        <div class="row g-3 p-2">
+            <div class="col-2">
+                <label for="create-door__field" class="form-label">door_number</label>
+            </div>
+            <div class="col-2">
+                <input type="number" id="create-door__field" class="form-control">
+                <div id="create-door__help_block" class="form-text">
+                    Your door_number must be a positive number.
+                </div>
+            </div>
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-warning mb-3" id="create-room-key-copy__btn">
-                Copy
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-clipboard" viewBox="0 0 16 16">
-                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                </svg>
-            </button>
+        <div class="row g-3 p-2">
+            <div class="col-2">
+                <label for="create-room-memory" class="form-label">room_memory</label>
+            </div>
+            <div class="col-2">
+                <select class="form-select" id="create-room-memory">
+                    <option value="128">128 mb</option>
+                    <option selected value="256">256 mb</option>
+                    <option value="512">512 mb</option>
+                    <option value="1024">1gb (1024 mb)</option>
+                    <option value="2048">2gb (2048 mb)</option>
+                </select>
+            </div>
         </div>
-        <button type="submit" class="btn btn-warning btn-md" id="create-room__btn">Create</button>
+        <div class="row g-3 p-2">
+            <div class="col-2">
+                <label for="create-room-auto-delete-number" class="form-label">auto_delete after</label>
+            </div>
+            <div class="col-2">
+                <label for="create-room-auto-delete-time">
+                    <input type="number" id="create-room-auto-delete-number" class="form-control">
+                    <div id="create-room-auto-delete-number__help_block" class="form-text">
+                        Max auto_delete is 24 hours.
+                    </div>
+                </label>
+            </div>
+            <div class="col-2">
+                <select class="form-select" id="create-room-auto-delete-time">
+                    <option selected value="minutes">minutes</option>
+                    <option value="minutes">hours</option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-3 p-2 justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning btn-md" id="create-room__btn">
+                    <i class="fa fa-lock"></i> Create <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
     </form>
 
+    <hr>
 
-    <!-- Find a room -->
-    <!--
-        room_key: input (show/hide)
-        [JOIN]
-    -->
-    <form class="row g-3 justify-content-center mt-3 mb-1">
+    <form class="mt-3 mb-1">
         <h3 class="text-center">Peek Room</h3>
-
+        <div class="row g-3 p-2">
+            <div class="col-2">
+                <label for="peek-room-key__field" class="form-label">room_key</label>
+            </div>
+            <div class="col-auto">
+                <input type="password" id="peek-room-key__field" class="form-control"
+                       aria-describedby="key__help_block">
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-warning mb-3" id="peek-room-key-input__btn">
+                    Show <i class="fa fa-eye"></i>
+                </button>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-warning mb-3" id="peek-room-key-copy__btn">
+                    Paste <i class="fa fa-paste"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row g-3 p-2">
+            <div class="col-2">
+                <label for="peek-door__field" class="form-label">door_number</label>
+            </div>
+            <div class="col-2">
+                <input type="number" id="peek-door__field" class="form-control">
+            </div>
+        </div>
+        <div class="row g-3 p-2 justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning btn-md" id="peek-room__btn">
+                    <i class="fa fa-unlock"></i> Peek <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
     </form>
 </div>
