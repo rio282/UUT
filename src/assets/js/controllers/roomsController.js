@@ -58,9 +58,16 @@ export class RoomsController extends Controller {
         const createRoomBtn = this.#roomsView.querySelector("#create-room__btn");
         createRoomBtn.addEventListener("click", async () => {
             await Loader.show();
-            // TODO: create room & nav to that room page (send create request to db)
-            //  - make room mvc
 
+            const roomKey = roomKeyInput.value;
+            const doorNumber = roomDoorInput.value;
+            const roomMemory = this.#roomsView.querySelector("#create-room-memory").value;
+            const autoDeleteAfter = `${this.#roomsView.querySelector("#create-room-auto-delete-number").value}_${this.#roomsView.querySelector("#create-room-auto-delete-time").value}`;
+
+            await this.#roomsRepository.create(roomKey, doorNumber, roomMemory, autoDeleteAfter).then(response => {
+                // TODO: nav to room page, pass response as constructor param (along with "create")
+                console.log(response);
+            });
 
             await Loader.hide();
         });
@@ -93,6 +100,12 @@ export class RoomsController extends Controller {
         roomPeekBtn.addEventListener("click", async () => {
             await Loader.show();
 
+            const roomKey = roomKeyPeekInput.value;
+            const doorNumber = this.#roomsView.querySelector("#peek-door__field").value;
+            await this.#roomsRepository.peek(roomKey, doorNumber).then(response => {
+                // TODO: nav to room page, pass response as constructor param (along with "peek")
+                console.log(response);
+            });
 
             await Loader.hide();
         });

@@ -29,7 +29,6 @@ export class NetworkManager {
             }
 
             // do request
-            App.print(`Doing ${method} request to ${url}\n  - JSON: ${json}`);
             response = await fetch(url, options);
             if (!response.ok) {
                 const jsonErrResponse = await response.json();
