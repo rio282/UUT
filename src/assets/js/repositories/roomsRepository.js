@@ -1,11 +1,11 @@
 import {NetworkManager} from "../framework/utils/networkManager.js";
 
-export class CatsRepository {
+export class RoomsRepository {
     #route
     #networkManager
 
     constructor() {
-        this.#route = "/cats"
+        this.#route = "/rooms"
         this.#networkManager = new NetworkManager();
     }
 

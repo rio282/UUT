@@ -3,7 +3,7 @@ import {NavbarController} from "./controllers/navbarController.js"
 import {FooterController} from "./controllers/footerController.js"
 import {HomeController} from "./controllers/homeController.js";
 import {ApiController} from "./controllers/apiController.js";
-import {CatsController} from "./controllers/catsController.js";
+import {RoomsController} from "./controllers/roomsController.js";
 
 export class App {
     static sessionManager = new SessionManager();
@@ -12,7 +12,8 @@ export class App {
     static CONTROLLER_FOOTER = "footer";
     static CONTROLLER_HOME = "home";
     static CONTROLLER_API = "api";
-    static CONTROLLER_CAT = "cats";
+    static CONTROLLER_ROOMS = "rooms";
+    static CONTROLLER_EMAIL = "email";
 
     constructor() {
         App.loadController(App.CONTROLLER_NAVBAR);
@@ -22,7 +23,7 @@ export class App {
     }
 
     static loadController(name, params = {}) {
-        App.print(`loadController: ${name}`);
+        App.print(`LOAD CONTROLLER: ${name}`);
 
         // switch to passed controller
         switch (name) {
@@ -42,9 +43,13 @@ export class App {
                 new ApiController();
                 break;
 
-            case App.CONTROLLER_CAT:
-                new CatsController();
+            case App.CONTROLLER_ROOMS:
+                new RoomsController();
                 break;
+
+            // case App.CONTROLLER_EMAIL:
+            //     new EmailController();
+            //     break;
 
             default:
                 return false;

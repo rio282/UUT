@@ -1,30 +1,53 @@
 /* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root {
+    --fg-color-light: black;
+    --bg-color-light: rgba(255, 255, 255, 1);
+    --fg-color-dark: rgba(225, 225, 225, 0.9);
+    --bg-color-dark: #1b1b1b;
+}
+
+/* ELEMENTS */
 * {
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
 
+body {
+    text-rendering: optimizeSpeed;
+    color: var(--fg-color-dark);
+    background-color: var(--bg-color-dark);
+}
+
+/* CLASSES */
 .content {
     /* TODO: fix this so it actually gets the navbar size*/
     margin-top: 95px;
 }
 
-/* NAVBAR */
+/* navbar */
 .navbar {
-    background-color: #00102b;
     padding: 1.7em;
     border: none !important;
     z-index: 9999;
 }
 
 /* PAGES */
+.hidden {
+    display: none;
+}
+
+
 .page-title {
     margin: 1.75rem;
     text-align: center !important
 }
 
-.hidden {
-    display: none;
+.form-check-input {
+    background-color: var(--bs-gray-dark);
+}
+
+#dark-theme-switch__label {
+    color: var(--fg-color-dark) !important;
 }

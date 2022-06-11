@@ -85,4 +85,14 @@ export class Controller {
     async loadHtmlIntoCustomElement(htmlFile, element) {
         return await this.#fetchHtmlView(htmlFile, element);
     }
+
+    /**
+     * Sleeps for a certain amount of time
+     *
+     * @param ms - amount of milliseconds
+     * @returns {Promise<*>}
+     */
+    sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
 }
