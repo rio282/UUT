@@ -38,7 +38,7 @@ class HomeRoutes {
                 });
 
 
-                res.status(this.#errorCodes.HTTP_OK_CODE).json();
+                res.status(this.#errorCodes.HTTP_OK_CODE).json({});
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e.toString()})
             }
@@ -50,9 +50,17 @@ class HomeRoutes {
                 const roomKey = req.params.room_key;
                 const doorNumber = req.params.door_number;
 
-                let data = "peek: " + roomKey;
+                // check if rooms exists
+                const root = path.join(__dirname, "..", "..", "db", roomKey);
+                if (!fs.existsSync(`${root}`))
+                    throw Error("Can't find room.");
 
-                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+
+                // read config file
+                const configFileContent = fs.readFileSync(path.join(root, "config.cfg"), {encoding: "utf8", flag: "r"});
+
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json(configFileContent);
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e.toString()})
             }
