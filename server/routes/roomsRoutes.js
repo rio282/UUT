@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 class HomeRoutes {
     #errorCodes = require("../framework/utils/httpErrorCodes");
     #route;
@@ -18,9 +21,24 @@ class HomeRoutes {
                 const roomMemory = req.body.room_memory;
                 const autoDeleteAfter = req.body.auto_delete_after;
 
-                let data = "create: " + roomKey;
+                // create folder
+                const root = path.join(__dirname, "..", "..", "db", roomKey);
+                if (!fs.existsSync(`${root}`))
+                    fs.mkdirSync(`${root}`);
 
-                res.status(this.#errorCodes.HTTP_OK_CODE).json(data);
+                // create config file
+                fs.writeFile(path.join(root, "config.cfg"), `room_key: ${roomKey}`, err => {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+
+                    console.log("Wrote to file!");
+                    console.log(path.join(root, "config.cfg"))
+                });
+
+
+                res.status(this.#errorCodes.HTTP_OK_CODE).json();
             } catch (e) {
                 res.status(this.#errorCodes.BAD_REQUEST_CODE).json({reason: e.toString()})
             }
