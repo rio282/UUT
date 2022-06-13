@@ -9,16 +9,16 @@ export class RoomsRepository {
         this.#networkManager = new NetworkManager();
     }
 
-    async create(roomKey, doorNumber, roomMemory, autoDeleteAfter) {
+    async createRoom(roomId, roomKey, roomMemory, autoDeleteAfter) {
         return await this.#networkManager.doRequest(`${this.#route}`, "POST", {
+            room_id: roomId,
             room_key: roomKey,
-            door_number: doorNumber,
             room_memory: roomMemory,
             auto_delete_after: autoDeleteAfter
         });
     }
 
-    async peek(roomKey, doorNumber) {
-        return await this.#networkManager.doRequest(`${this.#route}/${roomKey}/${doorNumber}`, "GET");
+    async getRoom(roomId) {
+        return await this.#networkManager.doRequest(`${this.#route}/${roomId}`, "GET");
     }
 }

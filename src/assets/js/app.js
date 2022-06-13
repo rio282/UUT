@@ -4,6 +4,7 @@ import {FooterController} from "./controllers/footerController.js"
 import {HomeController} from "./controllers/homeController.js";
 import {ApiController} from "./controllers/apiController.js";
 import {RoomsController} from "./controllers/roomsController.js";
+import {RoomController} from "./controllers/roomController.js";
 
 export class App {
     static sessionManager = new SessionManager();
@@ -13,6 +14,7 @@ export class App {
     static CONTROLLER_HOME = "home";
     static CONTROLLER_API = "api";
     static CONTROLLER_ROOMS = "rooms";
+    static CONTROLLER_ROOM = "room";
     static CONTROLLER_EMAIL = "email";
 
     constructor() {
@@ -45,6 +47,10 @@ export class App {
 
             case App.CONTROLLER_ROOMS:
                 new RoomsController();
+                break;
+
+            case App.CONTROLLER_ROOM:
+                new RoomController(params);
                 break;
 
             // case App.CONTROLLER_EMAIL:
